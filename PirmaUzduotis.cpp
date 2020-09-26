@@ -13,37 +13,43 @@
 
 using namespace std;
 
-struct duomenys {
+struct studentas {
     string vardas;
     string pavarde;
-    vector<int> pazymiai;
-    int number;
-    int egzaminas;
-    float galutinis;
-
+    float pazymiai[10];
     float vidurkis;
- 
+    float egzaminas;
+    float galutinis;
 };
 
 int main()
 {
-    duomenys eilute;
-    cout << "Iveskite savo varda: ";
-    cin >> eilute.vardas;
-    cout << "Iveskite savo pavarde: ";
-    cin >> eilute.pavarde;
-    cout << "Iveskite namu darbu pazymius: \n";
+    studentas eilute;
+    cout << "Iveskite studentu, kuriu duomenis pildysite, skaiciu: ";
+    int n = 0;
+    cin >> n;
+    studentas* grupe = new studentas[n];
 
-    for (int i = 0; i < 5; i++) {
-        int input;
-        eilute.pazymiai.push_back(input);
-        cin >> input;
+    cout << "Iveskite studento varda, pavarde, egzamino ivertinima ir semestro namu darbu pazymius: \n";
+    for (int i = 0; i < n; i++) {
+        cout << i + 1 << "-ojo studento duomenys: "; 
+        cin >> grupe[i].vardas >> grupe[i].pavarde >> grupe[i].egzaminas;
     }
-
-    cout << "Iveskite egzamino ivertinima: ";
-    cin >> eilute.egzaminas;
+    for (int i = 0; i < n; i++) {
+        cout << grupe[i].vardas << " : ";
+    }
+    cout << std::endl;
     
-    eilute.vidurkis = (accumulate(eilute.pazymiai.begin(), eilute.pazymiai.end(), 0)) / eilute.pazymiai.size();
+    studentas* temp = new studentas[n+1];
 
-    cout << "Pazymiu vidurkis: " << eilute.vidurkis;
+    for (int i = 0; i < n; i++) temp[i] = grupe[i];
+
+    for (int i = 0; i < n; i++) {
+        cout << temp[i].vardas << " : ";
+    }
+    cout << std::endl;
+
+    //cout << "Iveskite studento varda, pavarde, egzamino ivertinima ir semestro namu darbu pazymius: ";
+    //cin >> eilute.vardas >> eilute.pavarde >> eilute.egzaminas;
+
 }
